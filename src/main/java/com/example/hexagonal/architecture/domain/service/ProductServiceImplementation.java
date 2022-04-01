@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * The class is an use case implementation of the inbound port.
@@ -23,7 +24,7 @@ public class ProductServiceImplementation implements ProductService {
     }
 
     @Override
-    public Product getProductById(Integer productId) {
+    public Optional<Product> getProductById(Integer productId) {
         return productRepository.getProductById(productId);
     }
 
@@ -33,7 +34,7 @@ public class ProductServiceImplementation implements ProductService {
     }
 
     @Override
-    public Product removeProduct(Integer productId) {
+    public Optional<Product> removeProduct(Integer productId) {
         return productRepository.removeProduct(productId);
     }
 }

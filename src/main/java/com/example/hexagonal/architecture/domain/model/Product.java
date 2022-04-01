@@ -1,12 +1,17 @@
 package com.example.hexagonal.architecture.domain.model;
 
+import javax.persistence.*;
 import java.util.Objects;
 
 /**
  * The class defines the domain object model
  */
+@Entity
+@Table(name = "productos")
 public class Product {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer productId;
     private String type;
     private String description;

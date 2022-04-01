@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * The class defines a REST controller which is a primary adapter and invokes the inbound port of the application.
@@ -29,7 +30,7 @@ public class ProductController {
     }
 
     @GetMapping("/{productId}")
-    public ResponseEntity<Product> getProductById(@PathVariable Integer productId) {
+    public ResponseEntity<Optional<Product>> getProductById(@PathVariable Integer productId) {
         return new ResponseEntity<>(productService.getProductById(productId), HttpStatus.OK);
     }
 
@@ -39,7 +40,7 @@ public class ProductController {
     }
 
     @DeleteMapping("/{productId}")
-    public ResponseEntity<Product> removeProduct(@PathVariable Integer productId) {
+    public ResponseEntity<Optional<Product>> removeProduct(@PathVariable Integer productId) {
         return new ResponseEntity<>(productService.removeProduct(productId), HttpStatus.OK);
     }
 }

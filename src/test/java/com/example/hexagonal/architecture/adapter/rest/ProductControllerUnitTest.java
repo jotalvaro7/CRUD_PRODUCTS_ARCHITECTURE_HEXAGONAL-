@@ -64,7 +64,7 @@ public class ProductControllerUnitTest {
     @Test
     public void givenProduct_whenGetProductById_thenReturnValidProduct() throws Exception {
         Product mobilePhone = new Product(1, "Mobile Phone", "Samsung Galaxy S9");
-        given(productService.getProductById(Mockito.anyInt())).willReturn(mobilePhone);
+        given(productService.getProductById(Mockito.anyInt())).willReturn(java.util.Optional.of(mobilePhone));
 
         mvc.perform(get("/api/v1/product/1")
                 .contentType(MediaType.APPLICATION_JSON))
@@ -94,7 +94,7 @@ public class ProductControllerUnitTest {
     @Test
     public void whenDeleteProduct_thenRemoveValidProduct() throws Exception {
         Product book = new Product(1, "Book", "Kite Runner");
-        given(productService.removeProduct(Mockito.anyInt())).willReturn(book);
+        given(productService.removeProduct(Mockito.anyInt())).willReturn(java.util.Optional.of(book));
 
         mvc.perform(delete("/api/v1/product/1")
                 .contentType(MediaType.APPLICATION_JSON))
